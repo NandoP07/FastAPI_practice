@@ -37,8 +37,9 @@ def get_all_customers(db: Session = Depends(get_db)):
 
 @app.get("/customers/{id}", response_model = Customer_Response) #get single customer
 def get_customer(id: int, db: Session = Depends(get_db)):
-    selected_customer = db.query(models.Customer).filter(models.Customer.id == id).first()
-    check_if_deleted(selected_customer)
+    selected_customer = db.query(models.Customer).filter(models.Customer.id == id, models.Customer.deleted_at == None).first()
+    if not selected_customer:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Customer with id {id} does not exist")
     return selected_customer
 
 @app.post("/products", response_model = Product_Created) #create products
