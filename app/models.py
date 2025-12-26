@@ -1,7 +1,5 @@
 from sqlalchemy import TIMESTAMP, Column, Integer, String, Float, text
 from .database import Base
-from pydantic import BaseModel
-import datetime
 class Product(Base):
     __tablename__ = "products"
 
