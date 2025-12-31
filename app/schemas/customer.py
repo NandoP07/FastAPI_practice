@@ -21,10 +21,13 @@ class Customer_Created(BaseModel):
     created_at: datetime
 
 class Customer_Response(BaseModel):
+    id: int
     name: str
     email: str
     full_address: Optional[str] = None
     phone_number: str
+    created_at: datetime
+    updated_at: Optional[datetime] = None
     
     class Config:
         orm_mode = True

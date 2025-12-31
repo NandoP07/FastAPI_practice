@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: app/dockerfile
+    ports:
+      - "8005:8005"
+    volumes:
+      - ./:/app

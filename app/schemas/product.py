@@ -9,10 +9,11 @@ class Product(BaseModel):
     price: float
     stock: int
     # created_at: Optional[str] = None
-    updated_at: Optional[datetime] = None
+    # updated_at: Optional[datetime] = None
     # deleted_at: Optional[str] = None
 
 class Product_Response(BaseModel):
+    id: int
     name: str
     description: str
     price: float
